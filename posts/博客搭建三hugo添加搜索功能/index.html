@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>博客搭建三：hugo添加搜索功能 - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="博客搭建三：hugo添加搜索功能" />
+<meta property="og:description" content="博客搭建逐渐完善，博文内容也逐渐增多，添加搜索功能可以很方便的检索内容，对知识进行回顾，温故而知新。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-28T01:45:41+08:00" />
+<meta property="article:modified_time" content="2022-07-28T01:45:41+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="博客搭建三：hugo添加搜索功能"/>
+<meta name="twitter:description" content="博客搭建逐渐完善，博文内容也逐渐增多，添加搜索功能可以很方便的检索内容，对知识进行回顾，温故而知新。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" /><link rel="prev" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" /><link rel="next" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "博客搭建三：hugo添加搜索功能",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD\/"
+        },"genre": "posts","keywords": "博客","wordcount":  723 ,
+        "url": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD\/","datePublished": "2022-07-28T01:45:41+08:00","dateModified": "2022-07-28T01:45:41+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">博客搭建三：hugo添加搜索功能</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;723 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>博客搭建逐渐完善，博文内容也逐渐增多，添加搜索功能可以很方便的检索内容，对知识进行回顾，温故而知新。</p>
+<p>​实现hugo博客的内容检索利用的是algolia服务，首先，修改博客根目录下的 config.toml文件（而非主题文件下的，不然无法生成.josn文件），添加以下内容(粘贴至末尾即可）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">home</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span><span class="s2">&#34;RSS&#34;</span><span class="p">,</span><span class="s2">&#34;TXT&#34;</span><span class="p">,</span><span class="s2">&#34;Algolia&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">section</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">taxonomy</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">term</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputFormats</span><span class="o">.</span><span class="nx">Algolia</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">mediaType</span> <span class="o">=</span> <span class="s2">&#34;application/json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">baseName</span> <span class="o">=</span> <span class="s2">&#34;algolia&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">isPlainText</span> <span class="o">=</span> <span class="k">true</span>
+</span></span></code></pre></div><p>在博客根目录/layouts创建_default文件夹，在该文件夹内创建list.algolia.json文件，用nop++或者其他软件打开该文件并添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{{</span><span class="o">-</span> <span class="nx">range</span> <span class="nv">$index</span><span class="p">,</span> <span class="nv">$entry</span> <span class="o">:=</span> <span class="o">.</span><span class="nx">Site</span><span class="o">.</span><span class="nx">RegularPages</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{{</span><span class="o">-</span> <span class="k">if</span> <span class="nv">$index</span> <span class="p">}},</span> <span class="p">{{</span> <span class="nx">end</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;objectID&#34;</span><span class="o">:</span> <span class="p">{{</span> <span class="o">.</span><span class="nx">File</span><span class="o">.</span><span class="nx">TranslationBaseName</span> <span class="p">}},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;url&#34;</span><span class="o">:</span> <span class="p">{{</span> <span class="o">.</span><span class="nx">Permalink</span> <span class="o">|</span> <span class="nx">jsonify</span> <span class="p">}},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;title&#34;</span><span class="o">:</span> <span class="p">{{</span> <span class="o">.</span><span class="nx">Title</span> <span class="o">|</span> <span class="nx">jsonify</span> <span class="p">}},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;summary&#34;</span><span class="o">:</span> <span class="p">{{</span> <span class="o">.</span><span class="nx">Summary</span> <span class="o">|</span> <span class="nx">jsonify</span> <span class="p">}},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;content&#34;</span><span class="o">:</span> <span class="p">{{</span> <span class="o">.</span><span class="nx">Plain</span> <span class="o">|</span> <span class="nx">jsonify</span> <span class="p">}},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;pubDate&#34;</span><span class="o">:</span> <span class="p">{{</span> <span class="o">.</span><span class="nx">PublishDate</span> <span class="o">|</span> <span class="nx">jsonify</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{{</span><span class="o">-</span> <span class="nx">end</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><h4 id="注册algolia">注册algolia</h4>
+<p>按照注册指引流程走完然后打开设置，见下图。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f1.4eyg5uymwt20.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f1.4eyg5uymwt20.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f1.4eyg5uymwt20.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f1.4eyg5uymwt20.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搜索系统1.4eyg5uymwt20.png"
+        title="博客搜索系统1" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f2.3xmaa6zc8jc0.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f2.3xmaa6zc8jc0.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f2.3xmaa6zc8jc0.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f2.3xmaa6zc8jc0.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搜索系统2.3xmaa6zc8jc0.png"
+        title="博客搜索系统2" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># Search config
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1"># 搜索配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">[</span><span class="nx">params</span><span class="o">.</span><span class="nx">search</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">enable</span> <span class="o">=</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># type of search engine [&#34;lunr&#34;, &#34;algolia&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 搜索引擎的类型 [&#34;lunr&#34;, &#34;algolia&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">type</span> <span class="o">=</span> <span class="s2">&#34;algolia&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># max index length of the chunked content
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 文章内容最长索引长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">contentLength</span> <span class="o">=</span> <span class="mi">4000</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># placeholder of the search bar
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 搜索框的占位提示语
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">placeholder</span> <span class="o">=</span> <span class="s2">&#34;So一下&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># max number of results length
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 最大结果数目
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">maxResultLength</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># snippet length of the result
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 结果内容片段长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">snippetLength</span> <span class="o">=</span> <span class="mi">30</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># HTML tag name of the highlight part in results
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 搜索结果中高亮部分的 HTML 标签
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">highlightTag</span> <span class="o">=</span> <span class="s2">&#34;em&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># whether to use the absolute URL based on the baseURL in search index
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># 是否在搜索索引中使用基于 baseURL 的绝对路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">absoluteURL</span> <span class="o">=</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">params</span><span class="o">.</span><span class="nx">search</span><span class="o">.</span><span class="nx">algolia</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">index</span> <span class="o">=</span> <span class="s2">&#34;blog&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">appID</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span> <span class="c1"># 你的密钥
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">searchKey</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span> <span class="c1"># 你的密钥
+</span></span></span></code></pre></div><p>在博客根目录输入cmd命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">hugo</span>
+</span></span></code></pre></div><p>​		然后会在public文件夹下生成algolia.json文件，我们需要将该文件提交到algolia，见下图。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f3.50jx5a746mo0.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f3.50jx5a746mo0.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f3.50jx5a746mo0.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f3.50jx5a746mo0.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搜索系统3.50jx5a746mo0.png"
+        title="博客搜索系统3" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f4.55agkocr2h00.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f4.55agkocr2h00.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f4.55agkocr2h00.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f4.55agkocr2h00.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搜索系统4.55agkocr2h00.png"
+        title="博客搜索系统4" />
+至此初步搜索功能已经具备了（见下图)，能够满足日常使用需求，另外algolia免费版每月有10000次搜索体验。但是这样每次更新博客内容都需要手动提交algolia.json，才能搜索到新内容，也可以设置自动提交，可自行搜索相关设置。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f5.288k1695a328.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f5.288k1695a328.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f5.288k1695a328.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%9c%e7%b4%a2%e7%b3%bb%e7%bb%9f5.288k1695a328.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搜索系统5.288k1695a328.png"
+        title="博客搜索系统5" /></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" data-title="博客搭建三：hugo添加搜索功能" data-hashtags="博客"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" data-title="博客搭建三：hugo添加搜索功能"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" data-title="博客搭建三：hugo添加搜索功能"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" data-title="博客搭建三：hugo添加搜索功能"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" class="prev" rel="prev" title="博客搭建二：hugo添加gitalk评论功能"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>博客搭建二：hugo添加gitalk评论功能</a>
+            <a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" class="next" rel="next" title="博客搭建四：hugo添加友链">博客搭建四：hugo添加友链<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-07-28T01:45:41+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"博客搭建三：hugo添加搜索功能"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

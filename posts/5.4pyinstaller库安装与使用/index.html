@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>5.4 Pyinstaller库安装与使用 - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="5.4 Pyinstaller库安装与使用" />
+<meta property="og:description" content="Pyinstaller库：将.py源代码封装成可执行文件 Pyinstaller库使用 在.py文件目录下使用cmd命令 生成可执行文件命令 pyinstaller -F xx.py" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-30T15:45:49+08:00" />
+<meta property="article:modified_time" content="2022-07-30T15:45:49+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="5.4 Pyinstaller库安装与使用"/>
+<meta name="twitter:description" content="Pyinstaller库：将.py源代码封装成可执行文件 Pyinstaller库使用 在.py文件目录下使用cmd命令 生成可执行文件命令 pyinstaller -F xx.py"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" /><link rel="prev" href="https://ziyue.tech/posts/5.3python%E4%BB%A3%E7%A0%81%E4%B8%8E%E5%87%BD%E6%95%B0%E5%A4%8D%E7%94%A8%E7%94%A8%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" /><link rel="next" href="https://ziyue.tech/posts/5.5%E7%A7%91%E8%B5%AB%E9%9B%AA%E8%8A%B1%E5%B0%8F%E5%8C%85%E8%A3%B9/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "5.4 Pyinstaller库安装与使用",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8\/"
+        },"genre": "posts","keywords": "python","wordcount":  828 ,
+        "url": "https:\/\/ziyue.tech\/posts\/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8\/","datePublished": "2022-07-30T15:45:49+08:00","dateModified": "2022-07-30T15:45:49+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">5.4 Pyinstaller库安装与使用</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/code/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Code</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-30">2022-07-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;828 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#pyinstaller库使用">Pyinstaller库使用</a></li>
+        <li><a href="#pyinstaller库安装">Pyinstaller库安装</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Pyinstaller库：将.py源代码封装成可执行文件</p>
+<h3 id="pyinstaller库使用">Pyinstaller库使用</h3>
+<p>在.py文件目录下使用cmd命令</p>
+<h5 id="生成可执行文件命令">生成可执行文件命令</h5>
+<pre tabindex="0"><code>pyinstaller -F xx.py
+</code></pre><figure><img src="https://s2.loli.net/2022/07/22/3hTdpYl29aIBEHN.png"/>
+</figure>
+
+<!-- raw HTML omitted -->
+<h5 id="清理打包临时文件">清理打包临时文件</h5>
+<pre tabindex="0"><code>pyinstaller --clean xx.py
+</code></pre><h5 id="指定打包程序的图标文件icon">指定打包程序的图标文件icon</h5>
+<pre tabindex="0"><code>pyinstaller -i &lt;图标文件名.ico&gt; -F xx.py
+</code></pre><figure><img src="https://s2.loli.net/2022/07/22/AGDj956CIfR4UOK.png"/>
+</figure>
+
+<h3 id="pyinstaller库安装">Pyinstaller库安装</h3>
+<pre tabindex="0"><code>pip install pyinstaller
+</code></pre><p>报错</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Collecting pyinstaller
+</span></span><span class="line"><span class="cl">  Downloading pyinstaller-5.2-py3-none-win32.whl <span class="o">(</span>1.1 MB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">|</span>▌                               <span class="p">|</span> <span class="m">20</span> kB 8.8 kB/s eta 0:02:05ERROR: Exception:
+</span></span><span class="line"><span class="cl">Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\urllib3\response.py&#34;</span>, line 438, in _error_catcher
+</span></span><span class="line"><span class="cl">    yield
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\urllib3\response.py&#34;</span>, line 519, in <span class="nb">read</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">data</span> <span class="o">=</span> self._fp.read<span class="o">(</span>amt<span class="o">)</span> <span class="k">if</span> not fp_closed <span class="k">else</span> b<span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\cachecontrol\filewrapper.py&#34;</span>, line 62, in <span class="nb">read</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">data</span> <span class="o">=</span> self.__fp.read<span class="o">(</span>amt<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\http\client.py&#34;</span>, line 464, in <span class="nb">read</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">s</span> <span class="o">=</span> self.fp.read<span class="o">(</span>amt<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\socket.py&#34;</span>, line 705, in readinto
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> self._sock.recv_into<span class="o">(</span>b<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\ssl.py&#34;</span>, line 1273, in recv_into
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> self.read<span class="o">(</span>nbytes, buffer<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\ssl.py&#34;</span>, line 1129, in <span class="nb">read</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> self._sslobj.read<span class="o">(</span>len, buffer<span class="o">)</span>
+</span></span><span class="line"><span class="cl">TimeoutError: The <span class="nb">read</span> operation timed out
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">During handling of the above exception, another exception occurred:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\cli\base_command.py&#34;</span>, line 173, in _main
+</span></span><span class="line"><span class="cl">    <span class="nv">status</span> <span class="o">=</span> self.run<span class="o">(</span>options, args<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\cli\req_command.py&#34;</span>, line 203, in wrapper
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> func<span class="o">(</span>self, options, args<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\commands\install.py&#34;</span>, line 315, in run
+</span></span><span class="line"><span class="cl">    <span class="nv">requirement_set</span> <span class="o">=</span> resolver.resolve<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\resolver.py&#34;</span>, line 94, in resolve
+</span></span><span class="line"><span class="cl">    <span class="nv">result</span> <span class="o">=</span> self._result <span class="o">=</span> resolver.resolve<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\resolvelib\resolvers.py&#34;</span>, line 472, in resolve
+</span></span><span class="line"><span class="cl">    <span class="nv">state</span> <span class="o">=</span> resolution.resolve<span class="o">(</span>requirements, <span class="nv">max_rounds</span><span class="o">=</span>max_rounds<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\resolvelib\resolvers.py&#34;</span>, line 341, in resolve
+</span></span><span class="line"><span class="cl">    self._add_to_criteria<span class="o">(</span>self.state.criteria, r, <span class="nv">parent</span><span class="o">=</span>None<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\resolvelib\resolvers.py&#34;</span>, line 172, in _add_to_criteria
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> not criterion.candidates:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\resolvelib\structs.py&#34;</span>, line 151, in __bool__
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> bool<span class="o">(</span>self._sequence<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\found_candidates.py&#34;</span>, line 140, in __bool__
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> any<span class="o">(</span>self<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\found_candidates.py&#34;</span>, line 128, in &lt;genexpr&gt;
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">(</span>c <span class="k">for</span> c in iterator <span class="k">if</span> id<span class="o">(</span>c<span class="o">)</span> not in self._incompatible_ids<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\found_candidates.py&#34;</span>, line 32, in _iter_built
+</span></span><span class="line"><span class="cl">    <span class="nv">candidate</span> <span class="o">=</span> func<span class="o">()</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\factory.py&#34;</span>, line 204, in _make_candidate_from_link
+</span></span><span class="line"><span class="cl">    self._link_candidate_cache<span class="o">[</span>link<span class="o">]</span> <span class="o">=</span> LinkCandidate<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\candidates.py&#34;</span>, line 295, in __init__
+</span></span><span class="line"><span class="cl">    super<span class="o">()</span>.__init__<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\candidates.py&#34;</span>, line 156, in __init__
+</span></span><span class="line"><span class="cl">    self.dist <span class="o">=</span> self._prepare<span class="o">()</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\candidates.py&#34;</span>, line 227, in _prepare
+</span></span><span class="line"><span class="cl">    <span class="nv">dist</span> <span class="o">=</span> self._prepare_distribution<span class="o">()</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\resolution\resolvelib\candidates.py&#34;</span>, line 305, in _prepare_distribution
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> self._factory.preparer.prepare_linked_requirement<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\operations\prepare.py&#34;</span>, line 508, in prepare_linked_requirement
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> self._prepare_linked_requirement<span class="o">(</span>req, parallel_builds<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\operations\prepare.py&#34;</span>, line 550, in _prepare_linked_requirement
+</span></span><span class="line"><span class="cl">    <span class="nv">local_file</span> <span class="o">=</span> unpack_url<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\operations\prepare.py&#34;</span>, line 239, in unpack_url
+</span></span><span class="line"><span class="cl">    <span class="nv">file</span> <span class="o">=</span> get_http_url<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\operations\prepare.py&#34;</span>, line 102, in get_http_url
+</span></span><span class="line"><span class="cl">    from_path, <span class="nv">content_type</span> <span class="o">=</span> download<span class="o">(</span>link, temp_dir.path<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\network\download.py&#34;</span>, line 145, in __call__
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> chunk in chunks:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\cli\progress_bars.py&#34;</span>, line 144, in iter
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> x in it:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_internal\network\utils.py&#34;</span>, line 63, in response_chunks
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> chunk in response.raw.stream<span class="o">(</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\urllib3\response.py&#34;</span>, line 576, in stream
+</span></span><span class="line"><span class="cl">    <span class="nv">data</span> <span class="o">=</span> self.read<span class="o">(</span><span class="nv">amt</span><span class="o">=</span>amt, <span class="nv">decode_content</span><span class="o">=</span>decode_content<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\urllib3\response.py&#34;</span>, line 512, in <span class="nb">read</span>
+</span></span><span class="line"><span class="cl">    with self._error_catcher<span class="o">()</span>:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\contextlib.py&#34;</span>, line 153, in __exit__
+</span></span><span class="line"><span class="cl">    self.gen.throw<span class="o">(</span>typ, value, traceback<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\lib\site-packages\pip\_vendor\urllib3\response.py&#34;</span>, line 443, in _error_catcher
+</span></span><span class="line"><span class="cl">    raise ReadTimeoutError<span class="o">(</span>self._pool, None, <span class="s2">&#34;Read timed out.&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool<span class="o">(</span><span class="nv">host</span><span class="o">=</span><span class="s1">&#39;files.pythonhosted.org&#39;</span>, <span class="nv">port</span><span class="o">=</span>443<span class="o">)</span>: Read timed out.
+</span></span><span class="line"><span class="cl">WARNING: You are using pip version 21.2.3<span class="p">;</span> however, version 22.1.2 is available.
+</span></span><span class="line"><span class="cl">You should consider upgrading via the <span class="s1">&#39;C:\Users\kai\AppData\Local\Programs\Python\Python310-32\python.exe -m pip install --upgrade pip&#39;</span> command.
+</span></span></code></pre></div><p>解决办法</p>
+<pre tabindex="0"><code>python -m pip install -U pip
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Requirement already satisfied: pip in c:<span class="se">\u</span>sers<span class="se">\k</span>ai<span class="se">\a</span>ppdata<span class="se">\l</span>ocal<span class="se">\p</span>rograms<span class="se">\p</span>ython<span class="se">\p</span>ython310-32<span class="se">\l</span>ib<span class="se">\s</span>ite-packages <span class="o">(</span>21.2.3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Collecting pip
+</span></span><span class="line"><span class="cl">  Downloading pip-22.1.2-py3-none-any.whl <span class="o">(</span>2.1 MB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">|</span>████████████████████████████████<span class="p">|</span> 2.1 MB <span class="m">111</span> kB/s
+</span></span><span class="line"><span class="cl">Installing collected packages: pip
+</span></span><span class="line"><span class="cl">  Attempting uninstall: pip
+</span></span><span class="line"><span class="cl">    Found existing installation: pip 21.2.3
+</span></span><span class="line"><span class="cl">    Uninstalling pip-21.2.3:
+</span></span><span class="line"><span class="cl">      Successfully uninstalled pip-21.2.3
+</span></span><span class="line"><span class="cl">Successfully installed pip-22.1.2
+</span></span></code></pre></div><pre tabindex="0"><code>pip install pyinstaller
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Requirement already satisfied: pip in c:<span class="se">\u</span>sers<span class="se">\k</span>ai<span class="se">\a</span>ppdata<span class="se">\l</span>ocal<span class="se">\p</span>rograms<span class="se">\p</span>ython<span class="se">\p</span>ython310-32<span class="se">\l</span>ib<span class="se">\s</span>ite-packages <span class="o">(</span>21.2.3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Collecting pip
+</span></span><span class="line"><span class="cl">  Downloading pip-22.1.2-py3-none-any.whl <span class="o">(</span>2.1 MB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">|</span>████████████████████████████████<span class="p">|</span> 2.1 MB <span class="m">111</span> kB/s
+</span></span><span class="line"><span class="cl">Installing collected packages: pip
+</span></span><span class="line"><span class="cl">  Attempting uninstall: pip
+</span></span><span class="line"><span class="cl">    Found existing installation: pip 21.2.3
+</span></span><span class="line"><span class="cl">    Uninstalling pip-21.2.3:
+</span></span><span class="line"><span class="cl">      Successfully uninstalled pip-21.2.3
+</span></span><span class="line"><span class="cl">Successfully installed pip-22.1.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\k</span>ai&gt;pip install pyinstaller
+</span></span><span class="line"><span class="cl">Collecting pyinstaller
+</span></span><span class="line"><span class="cl">  Downloading pyinstaller-5.2-py3-none-win32.whl <span class="o">(</span>1.1 MB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     ---------------------------------------- 1.1/1.1 MB 25.5 kB/s eta 0:00:00
+</span></span><span class="line"><span class="cl">Requirement already satisfied: setuptools in c:<span class="se">\u</span>sers<span class="se">\k</span>ai<span class="se">\a</span>ppdata<span class="se">\l</span>ocal<span class="se">\p</span>rograms<span class="se">\p</span>ython<span class="se">\p</span>ython310-32<span class="se">\l</span>ib<span class="se">\s</span>ite-packages <span class="o">(</span>from pyinstaller<span class="o">)</span> <span class="o">(</span>57.4.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Collecting pywin32-ctypes&gt;<span class="o">=</span>0.2.0
+</span></span><span class="line"><span class="cl">  Downloading pywin32_ctypes-0.2.0-py2.py3-none-any.whl <span class="o">(</span><span class="m">28</span> kB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Collecting pefile&gt;<span class="o">=</span>2022.5.30
+</span></span><span class="line"><span class="cl">  Downloading pefile-2022.5.30.tar.gz <span class="o">(</span><span class="m">72</span> kB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     ---------------------------------------- 72.9/72.9 kB 18.8 kB/s eta 0:00:00
+</span></span><span class="line"><span class="cl">  Preparing metadata <span class="o">(</span>setup.py<span class="o">)</span> ... <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Collecting altgraph
+</span></span><span class="line"><span class="cl">  Downloading altgraph-0.17.2-py2.py3-none-any.whl <span class="o">(</span><span class="m">21</span> kB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Collecting pyinstaller-hooks-contrib&gt;<span class="o">=</span>2021.4
+</span></span><span class="line"><span class="cl">  Downloading pyinstaller_hooks_contrib-2022.8-py2.py3-none-any.whl <span class="o">(</span><span class="m">239</span> kB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     ---------------------------------------- 239.8/239.8 kB 11.5 kB/s eta 0:00:00
+</span></span><span class="line"><span class="cl">Collecting future
+</span></span><span class="line"><span class="cl">  Downloading future-0.18.2.tar.gz <span class="o">(</span><span class="m">829</span> kB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     ---------------------------------------- 829.2/829.2 kB 21.8 kB/s eta 0:00:00
+</span></span><span class="line"><span class="cl">  Preparing metadata <span class="o">(</span>setup.py<span class="o">)</span> ... <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Using legacy <span class="s1">&#39;setup.py install&#39;</span> <span class="k">for</span> pefile, since package <span class="s1">&#39;wheel&#39;</span> is not installed.
+</span></span><span class="line"><span class="cl">Using legacy <span class="s1">&#39;setup.py install&#39;</span> <span class="k">for</span> future, since package <span class="s1">&#39;wheel&#39;</span> is not installed.
+</span></span><span class="line"><span class="cl">Installing collected packages: pywin32-ctypes, altgraph, pyinstaller-hooks-contrib, future, pefile, pyinstaller
+</span></span><span class="line"><span class="cl">  Running setup.py install <span class="k">for</span> future ... <span class="k">done</span>
+</span></span><span class="line"><span class="cl">  Running setup.py install <span class="k">for</span> pefile ... <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Successfully installed altgraph-0.17.2 future-0.18.2 pefile-2022.5.30 pyinstaller-5.2 pyinstaller-hooks-contrib-2022.8 pywin32-ctypes-0.2.0
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-30</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-title="5.4 Pyinstaller库安装与使用" data-hashtags="python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-title="5.4 Pyinstaller库安装与使用"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-title="5.4 Pyinstaller库安装与使用"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/5.4pyinstaller%E5%BA%93%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-title="5.4 Pyinstaller库安装与使用"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">python</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/5.3python%E4%BB%A3%E7%A0%81%E4%B8%8E%E5%87%BD%E6%95%B0%E5%A4%8D%E7%94%A8%E7%94%A8%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" class="prev" rel="prev" title="5.3 Python代码与函数复用：用递归函数求解汉诺塔问题"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>5.3 Python代码与函数复用：用递归函数求解汉诺塔问题</a>
+            <a href="/posts/5.5%E7%A7%91%E8%B5%AB%E9%9B%AA%E8%8A%B1%E5%B0%8F%E5%8C%85%E8%A3%B9/" class="next" rel="next" title="5.5 科赫雪花小包裹">5.5 科赫雪花小包裹<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-07-30T15:45:49+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"5.4 Pyinstaller库安装与使用"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

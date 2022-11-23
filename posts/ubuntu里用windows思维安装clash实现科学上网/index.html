@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>在Ubuntu里用Windows思维安装Clash实现科学上网 - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="在Ubuntu里用Windows思维安装Clash实现科学上网" />
+<meta property="og:description" content="新版的ubuntu22.04LTS(ubuntu22.10)异常地好用，在设置里简单设置一下外观，界面就很Mac风，想尝试ubuntu的小伙伴可以入手了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-18T19:19:07+08:00" />
+<meta property="article:modified_time" content="2022-11-18T19:19:07+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在Ubuntu里用Windows思维安装Clash实现科学上网"/>
+<meta name="twitter:description" content="新版的ubuntu22.04LTS(ubuntu22.10)异常地好用，在设置里简单设置一下外观，界面就很Mac风，想尝试ubuntu的小伙伴可以入手了。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" /><link rel="prev" href="https://ziyue.tech/posts/ubuntu%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9%E5%92%8C%E8%BD%AF%E4%BB%B6%E4%BB%AC/" /><link rel="next" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%94%E5%9B%BE%E5%BA%8A%E9%80%89%E6%8B%A9/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "在Ubuntu里用Windows思维安装Clash实现科学上网",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91\/"
+        },"genre": "posts","keywords": "Ubuntu","wordcount":  1183 ,
+        "url": "https:\/\/ziyue.tech\/posts\/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91\/","datePublished": "2022-11-18T19:19:07+08:00","dateModified": "2022-11-18T19:19:07+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">在Ubuntu里用Windows思维安装Clash实现科学上网</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-18">2022-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1183 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1从github上搜索clash-for-windows">1、从github上搜索clash for windows</a></li>
+        <li><a href="#2进去后点击releases">2、进去后点击Releases</a></li>
+        <li><a href="#3下载clashforwindows-0207-x64-linuxtargz即可">3、下载Clash.for.Windows-0.20.7-x64-linux.tar.gz即可</a></li>
+        <li><a href="#4文件下载后右键文件将文件解压到一个你喜欢的文件夹里不需要使用linux的命令">4、文件下载后，右键文件将文件解压到一个你喜欢的文件夹里（不需要使用linux的命令）</a></li>
+        <li><a href="#5输入-cfw-就会打开clash软件出现一只小猫猫">5、输入 ./cfw 就会打开Clash软件（出现一只小猫猫）</a></li>
+        <li><a href="#6点击profiles在上面那个框框里输入clash订阅链接然后download即可">6、点击Profiles，在上面那个框框里输入Clash订阅链接，然后Download即可</a></li>
+        <li><a href="#7点击proxies选择延迟低的进行连接">7、点击Proxies，选择延迟低的进行连接</a></li>
+        <li><a href="#8最后一步在ubuntu系统的设置里将网络设置的网络代理更改为手动">8、最后一步，在ubuntu系统的设置里将网络设置的网络代理更改为手动</a></li>
+        <li><a href="#9总结">9、总结</a></li>
+        <li><a href="#ubuntu用来干吗">Ubuntu用来干吗？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>新版的ubuntu22.04LTS(ubuntu22.10)异常地好用，在设置里简单设置一下外观，界面就很Mac风，想尝试ubuntu的小伙伴可以入手了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-1.2rlacxhouhq0.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-1.2rlacxhouhq0.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-1.2rlacxhouhq0.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-1.2rlacxhouhq0.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-1.2rlacxhouhq0.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-1" /></p>
+<p>网上很多实现科学上网的教程纷繁芜杂，大多都是需要敲击N多命令，对初入ubuntu的小伙伴实在是不友好，能够安装成功也就罢了，但是到最后大概率会安装失败就很闹心（可能是一些依赖库与新版本不兼容）。</p>
+<p>在ubuntu上，现阶段实现科学上网最简单的办法是使用Clash代理软件。</p>
+<h3 id="1从github上搜索clash-for-windows">1、从github上搜索clash for windows</h3>
+<p>搜索结果的第一条就是（见下图），github时不时抽风，如果github登不上去，这里放上天翼云盘所需文件链接：https://cloud.189.cn/web/share?code=77faqenQ3EZj（访问码：ecl2） 如果需要最新版，还是要进github里下载。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-2.hvrv83n4p6g.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-2.hvrv83n4p6g.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-2.hvrv83n4p6g.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-2.hvrv83n4p6g.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-2.hvrv83n4p6g.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-2" /></p>
+<h3 id="2进去后点击releases">2、进去后点击Releases</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-3.557zyfxqvug0.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-3.557zyfxqvug0.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-3.557zyfxqvug0.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-3.557zyfxqvug0.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-3.557zyfxqvug0.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-3" /></p>
+<h3 id="3下载clashforwindows-0207-x64-linuxtargz即可">3、下载Clash.for.Windows-0.20.7-x64-linux.tar.gz即可</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-4.6ym6admm25o0.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-4.6ym6admm25o0.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-4.6ym6admm25o0.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-4.6ym6admm25o0.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-4.6ym6admm25o0.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-4" /></p>
+<h3 id="4文件下载后右键文件将文件解压到一个你喜欢的文件夹里不需要使用linux的命令">4、文件下载后，右键文件将文件解压到一个你喜欢的文件夹里（不需要使用linux的命令）</h3>
+<p>文件解压完后，打开这个文件夹，然后右键&gt;在终端打开</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-5.nzck2oaarcw.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-5.nzck2oaarcw.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-5.nzck2oaarcw.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-5.nzck2oaarcw.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-5.nzck2oaarcw.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-5" /></p>
+<p>到这一步后我们可以看到第一行cfw文件，此时它已经具有可执行权限（是的，在配置Qv2ray时涉及到配置可执行权限）。输入ls -all cfw可查看是否具有可执行权限，输入chmod +x cfw可给cfw加上可执行权限。</p>
+<h3 id="5输入-cfw-就会打开clash软件出现一只小猫猫">5、输入 ./cfw 就会打开Clash软件（出现一只小猫猫）</h3>
+<p>勾选start with linux就可以开机启动，不用每次输命令启动。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-6.1057uun92bk0.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-6.1057uun92bk0.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-6.1057uun92bk0.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-6.1057uun92bk0.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-6.1057uun92bk0.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-6" /></p>
+<h3 id="6点击profiles在上面那个框框里输入clash订阅链接然后download即可">6、点击Profiles，在上面那个框框里输入Clash订阅链接，然后Download即可</h3>
+<p>关于订阅链接如何获取各位仁者见仁，智者见智。（小贴士：有的订阅链接可能需要科学上网才能下载，啊这，我都能科学上网了，还订阅你链接干啥&lt;_&lt;）Download成功后，点击某一个标签，带绿杠表示激活使用中。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-7.1vnthduunrfk.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-7.1vnthduunrfk.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-7.1vnthduunrfk.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-7.1vnthduunrfk.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-7.1vnthduunrfk.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-7" /></p>
+<h3 id="7点击proxies选择延迟低的进行连接">7、点击Proxies，选择延迟低的进行连接</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-8.5bqu2qoif0w0.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-8.5bqu2qoif0w0.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-8.5bqu2qoif0w0.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-8.5bqu2qoif0w0.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-8.5bqu2qoif0w0.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-8" /></p>
+<h3 id="8最后一步在ubuntu系统的设置里将网络设置的网络代理更改为手动">8、最后一步，在ubuntu系统的设置里将网络设置的网络代理更改为手动</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-9.5vx3taw7p340.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-9.5vx3taw7p340.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-9.5vx3taw7p340.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-9.5vx3taw7p340.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-9.5vx3taw7p340.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-9" /></p>
+<p>网络代理设置如下，将网络链接到端口7890（在一开始的Clash打开界面可以看到）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-10.1ges7nhjb65c.webp"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-10.1ges7nhjb65c.webp, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-10.1ges7nhjb65c.webp 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%9c%a8Ubuntu%e9%87%8c%e7%94%a8Windows%e6%80%9d%e7%bb%b4%e5%ae%89%e8%a3%85Clash%e5%ae%9e%e7%8e%b0%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91-10.1ges7nhjb65c.webp 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/在Ubuntu里用Windows思维安装Clash实现科学上网-10.1ges7nhjb65c.webp"
+        title="在Ubuntu里用Windows思维安装Clash实现科学上网-10" /></p>
+<h3 id="9总结">9、总结</h3>
+<p>Clash是我目前发现最简单的代理设置软件了，Qv2ray、v2rayl等等软件配置起来需要各种命令、各种库，安装起来太搞人心态了。</p>
+<h3 id="ubuntu用来干吗">Ubuntu用来干吗？</h3>
+<p>尝试下新鲜事物，用来写写博客。在ubuntu里配置博客部署到github简直不要太方便。</p>
+<p>hugo可以在软件商店里下载，vscode里添加markdown插件写md文档很方便（小贴士：vscode下载官网上的版本，snap商店里的版本写md文档是输入不了中文）。</p>
+<p>sudo apt install git可以把git安装好。</p>
+<h4 id="如何将博客部署到github上">如何将博客部署到github上？</h4>
+<p>将本地博客链接好github上以后，git push直接就完事了。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-11-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" data-title="在Ubuntu里用Windows思维安装Clash实现科学上网" data-hashtags="Ubuntu"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" data-title="在Ubuntu里用Windows思维安装Clash实现科学上网"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" data-title="在Ubuntu里用Windows思维安装Clash实现科学上网"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" data-title="在Ubuntu里用Windows思维安装Clash实现科学上网"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ubuntu/">Ubuntu</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ubuntu%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9%E5%92%8C%E8%BD%AF%E4%BB%B6%E4%BB%AC/" class="prev" rel="prev" title="Ubuntu版本选择和软件们"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Ubuntu版本选择和软件们</a>
+            <a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%94%E5%9B%BE%E5%BA%8A%E9%80%89%E6%8B%A9/" class="next" rel="next" title="博客搭建五：图床选择">博客搭建五：图床选择<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-11-18T19:19:07+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"在Ubuntu里用Windows思维安装Clash实现科学上网"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

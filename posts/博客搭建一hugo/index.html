@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>博客搭建一：hugo - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="博客搭建一：hugo" />
+<meta property="og:description" content="打算把写博客长期坚持下去，考虑到后面博文数量会慢慢增多，hexo框架会越来越捉襟见肘，于是把博客从hexo迁移至hugo。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-27T21:47:21+08:00" />
+<meta property="article:modified_time" content="2022-07-27T21:47:21+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="博客搭建一：hugo"/>
+<meta name="twitter:description" content="打算把写博客长期坚持下去，考虑到后面博文数量会慢慢增多，hexo框架会越来越捉襟见肘，于是把博客从hexo迁移至hugo。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" /><link rel="prev" href="https://ziyue.tech/posts/%E6%A1%83%E5%A4%AD/" /><link rel="next" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "博客搭建一：hugo",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo\/"
+        },"genre": "posts","keywords": "博客","wordcount":  1361 ,
+        "url": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo\/","datePublished": "2022-07-27T21:47:21+08:00","dateModified": "2022-07-27T21:47:21+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">博客搭建一：hugo</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-27">2022-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1361 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装hugo">安装hugo</a></li>
+        <li><a href="#注册github账号">注册GitHub账号</a></li>
+        <li><a href="#安装git">安装Git</a></li>
+        <li><a href="#建立博客站点">建立博客站点</a></li>
+        <li><a href="#选择一个博客主题">选择一个博客主题</a></li>
+        <li><a href="#新建一篇博文">新建一篇博文</a></li>
+        <li><a href="#部署博客">部署博客</a></li>
+        <li><a href="#另">另：</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>打算把写博客长期坚持下去，考虑到后面博文数量会慢慢增多，hexo框架会越来越捉襟见肘，于是把博客从hexo迁移至hugo。</p>
+<h3 id="安装hugo">安装hugo</h3>
+<p>首先从GitHub上下载hugo，地址：<a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener noreffer">https://github.com/gohugoio/hugo</a>
+</p>
+<p>根据自己的电脑下载相应的版本，下载下来后解压到一个文件目录（出于习惯最好选择全英文路径下吧）然后将hugo文件所在的路径地址添加到系统变量path中就可以使用了。不用安装！不用安装！不用安装！
+​在cmd命令中验证</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">hugo</span> <span class="nx">version</span>
+</span></span></code></pre></div><p>出现下面语句证明hugo可以正常使用了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">Hugo</span> <span class="k">Static</span> <span class="nx">Site</span> <span class="nx">Generator</span> <span class="nx">v0</span><span class="o">.</span><span class="mf">70.0</span><span class="o">/</span><span class="nx">extended</span> <span class="nx">windows</span><span class="o">/</span><span class="nx">amd64</span> <span class="nx">BuildDate</span><span class="o">:</span> <span class="nx">unknown</span>
+</span></span></code></pre></div><h3 id="注册github账号">注册GitHub账号</h3>
+<p>新建一个空仓库，仓库名称：usename.github.io，为后面的GitHub pages做准备，如果随便起名，后面就不能把博客部署到GitHub上了。</p>
+<h3 id="安装git">安装Git</h3>
+<p>我在博客搭建一中写了参见：<a href="http://t.csdn.cn/sSAIU" target="_blank" rel="noopener noreffer">http://t.csdn.cn/sSAIU</a>
+基本上下载下来一路下一步就可以了，然后将把git和你的仓库进行链接，这样才能把本地文件推送进你的博客仓库里。git的作用是把你的本地博客文件推送到GitHub pages上，这样别人就能通过站点地址访问到你的博客了，快乐源于分享。</p>
+<h3 id="建立博客站点">建立博客站点</h3>
+<p>在某一个文件夹目录下，运行cmd命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">hugo</span> <span class="k">new</span> <span class="nx">site</span> <span class="nx">xxx</span>   <span class="c1"># xxx为你为你的本地博客的名字，以后所有的文件都在这个目录下
+</span></span></span></code></pre></div><p>然后该目录下就会生成一堆文件，这些都不用管，我们只关心content文件夹、theme文件夹和config.toml文件，这里面包含了我们的博文.md文件存放处，主题设置和hugo基础页面设置，例如改网站名作者名等等。</p>
+<h3 id="选择一个博客主题">选择一个博客主题</h3>
+<p>因为hugo没有带默认主题，也就没有博客页面，所以要先找一个博客主题，在hugo官网上或者GitHub上找都可以，然后按照不同的主题上面的操作指导进行即可，建议先选一个简单的，先把博客搭建起来，然后再慢慢选主题。</p>
+<h3 id="新建一篇博文">新建一篇博文</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">hugo</span> <span class="k">new</span> <span class="nx">posts</span><span class="o">/</span><span class="nx">xxx</span><span class="o">.</span><span class="nx">md</span>
+</span></span></code></pre></div><p>这样就会在content文件夹下生成posts文件夹，有些主题的某个标签会指向posts文件夹，最好创建以下，即不要直接hugo new xxx.md，不然可能会找不到你的博客内容。然后再该文件夹下生成xxx.md文件，该文件就是你后面编辑文章的文件，用你熟悉的markdown软件写内容就可以了。</p>
+<h3 id="部署博客">部署博客</h3>
+<p>在博客根目录下用cmd命令或直接git bash here 输入：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">hugo</span>
+</span></span></code></pre></div><p>会在博客根目录生成public文件夹，里面的文件就是我们要推送到仓库的文件。在该目录下用cmd命令或直接git bash here 。
+​第一次推送要先与仓库地址建立联系。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">init</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">commit</span> <span class="o">-</span><span class="nx">m</span> <span class="s2">&#34;first commit&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">branch</span> <span class="o">-</span><span class="nx">M</span> <span class="nx">main</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">remote</span> <span class="nx">add</span> <span class="nx">origin</span> <span class="nx">https</span><span class="o">://</span><span class="nx">github</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">usename</span><span class="o">/</span><span class="nx">usename</span><span class="o">.</span><span class="nx">github</span><span class="o">.</span><span class="nx">io</span><span class="o">.</span><span class="nx">git</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># **注：这里要改成你的仓库地址，不然推送不成功**
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">push</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">origin</span> <span class="nx">main</span>
+</span></span></code></pre></div><p>以后添加文章：在public文件夹下操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">add</span> <span class="o">.</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">commit</span> <span class="o">-</span><span class="nx">m</span> <span class="s2">&#34;add blog post&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">push</span>
+</span></span></code></pre></div><p>至此你的博客基本上就搭建好了，后面就是写博客和选主题了，至于主题如何选，就仁者见仁智者见智了。</p>
+<h3 id="另">另：</h3>
+<p>1.如何更改网站图标, 浏览器配置？</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">apple</span><span class="o">-</span><span class="nx">touch</span><span class="o">-</span><span class="nx">icon</span><span class="o">.</span><span class="nx">png</span> <span class="p">(</span><span class="mi">180</span><span class="nx">x180</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">favicon</span><span class="o">-</span><span class="mi">32</span><span class="nx">x32</span><span class="o">.</span><span class="nx">png</span> <span class="p">(</span><span class="mi">32</span><span class="nx">x32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">favicon</span><span class="o">-</span><span class="mi">16</span><span class="nx">x16</span><span class="o">.</span><span class="nx">png</span> <span class="p">(</span><span class="mi">16</span><span class="nx">x16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">mstile</span><span class="o">-</span><span class="mi">150</span><span class="nx">x150</span><span class="o">.</span><span class="nx">png</span> <span class="p">(</span><span class="mi">150</span><span class="nx">x150</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">android</span><span class="o">-</span><span class="nx">chrome</span><span class="o">-</span><span class="mi">192</span><span class="nx">x192</span><span class="o">.</span><span class="nx">png</span> <span class="p">(</span><span class="mi">192</span><span class="nx">x192</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">android</span><span class="o">-</span><span class="nx">chrome</span><span class="o">-</span><span class="mi">512</span><span class="nx">x512</span><span class="o">.</span><span class="nx">png</span> <span class="p">(</span><span class="mi">512</span><span class="nx">x512</span><span class="p">)</span>
+</span></span></code></pre></div><p>放在博客根目录 /static 目录即可， 可以在 <a href="https://realfavicongenerator.net/" target="_blank" rel="noopener noreffer">https://realfavicongenerator.net/</a>
+ 网站上将图片生成这些文件，部署到GitHub pages上时可能不会立即生效。</p>
+<p>2.如何更新博客？
+​2.1 在博客根目录运行cmd命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">hugo</span> <span class="k">new</span> <span class="nx">posts</span><span class="o">/</span><span class="nx">新博文名字</span><span class="o">.</span><span class="nx">md</span>
+</span></span></code></pre></div><p>2.2 编写博文内容</p>
+<p>2.3 将博文部署到GitHub pages</p>
+<p>在博客根目录的public文件里git bash huer</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">add</span> <span class="o">.</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">commit</span> <span class="o">-</span><span class="nx">m</span> <span class="s2">&#34;更改说明（例如添加博客）add blog&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">git</span> <span class="nx">push</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" data-title="博客搭建一：hugo" data-hashtags="博客"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" data-title="博客搭建一：hugo"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" data-title="博客搭建一：hugo"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" data-title="博客搭建一：hugo"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%A1%83%E5%A4%AD/" class="prev" rel="prev" title="桃夭"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>桃夭</a>
+            <a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" class="next" rel="next" title="博客搭建二：hugo添加gitalk评论功能">博客搭建二：hugo添加gitalk评论功能<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-07-27T21:47:21+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"博客搭建一：hugo"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

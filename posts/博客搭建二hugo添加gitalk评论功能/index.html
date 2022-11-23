@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>博客搭建二：hugo添加gitalk评论功能 - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="博客搭建二：hugo添加gitalk评论功能" />
+<meta property="og:description" content="好的想法需要交流。
+​我们的博客已经搭建好了，可以再上面愉快的发文章，但是我们需要一个连接外界和别人交流的窗口，一如多年前QQ的四四方方的长条聊天框，拉近了我们彼此的联系。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-27T22:43:21+08:00" />
+<meta property="article:modified_time" content="2022-07-27T22:43:21+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="博客搭建二：hugo添加gitalk评论功能"/>
+<meta name="twitter:description" content="好的想法需要交流。
+​我们的博客已经搭建好了，可以再上面愉快的发文章，但是我们需要一个连接外界和别人交流的窗口，一如多年前QQ的四四方方的长条聊天框，拉近了我们彼此的联系。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" /><link rel="prev" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" /><link rel="next" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "博客搭建二：hugo添加gitalk评论功能",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD\/"
+        },"genre": "posts","keywords": "博客","wordcount":  684 ,
+        "url": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD\/","datePublished": "2022-07-27T22:43:21+08:00","dateModified": "2022-07-27T22:43:21+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">博客搭建二：hugo添加gitalk评论功能</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-27">2022-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;684 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>好的想法需要交流。
+​我们的博客已经搭建好了，可以再上面愉快的发文章，但是我们需要一个连接外界和别人交流的窗口，一如多年前QQ的四四方方的长条聊天框，拉近了我们彼此的联系。</p>
+<h4 id="评论系统的选择">评论系统的选择</h4>
+<p>每种评论体统都有各自的优缺点，这里选择gitalk评论系统，光从名字就知道它与GitHub有关。
+​首先，打开D:\博客根目录\themes\LoveIt\layouts\posts里的single.html文件，在底部{- /* Comment */ -}}下面添加{ {{- partial &ldquo;comment.html&rdquo; . -}}，在D:\博客根目录\themes\LoveIt\layouts\partials下创建gitalk.html文件，并复制粘贴进以下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="nx">Site</span><span class="o">.</span><span class="nx">Params</span><span class="o">.</span><span class="nx">enableGitalk</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;gitalk-container&#34;</span><span class="o">&gt;&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&#34;https://unpkg.com/gitalk/dist/gitalk.css&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://unpkg.com/gitalk/dist/gitalk.min.js&#34;</span><span class="o">&gt;&lt;/</span><span class="nx">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="no">gitalk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gitalk</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">clientID</span><span class="o">:</span> <span class="s1">&#39;{{ .Site.Params.Gitalk.clientID }}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">clientSecret</span><span class="o">:</span> <span class="s1">&#39;{{ .Site.Params.Gitalk.clientSecret }}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">repo</span><span class="o">:</span> <span class="s1">&#39;{{ .Site.Params.Gitalk.repo }}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">owner</span><span class="o">:</span> <span class="s1">&#39;{{ .Site.Params.Gitalk.owner }}&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">admin</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;{{ .Site.Params.Gitalk.owner }}&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">id</span><span class="o">:</span> <span class="nx">location</span><span class="o">.</span><span class="nx">pathname</span><span class="p">,</span> <span class="c1">// Ensure uniqueness and length less than 50
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">distractionFreeMode</span><span class="o">:</span> <span class="k">false</span> <span class="c1">// Facebook-like distraction free mode
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">([</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">]</span><span class="o">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">window</span><span class="o">.</span><span class="nx">location</span><span class="o">.</span><span class="nx">hostname</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">document</span><span class="o">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;gitalk-container&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;Gitalk comments not available by default when the website is previewed locally.&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">gitalk</span><span class="o">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;gitalk-container&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})();</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="nx">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{{</span> <span class="nx">end</span> <span class="p">}}</span>
+</span></span></code></pre></div><p>我们先注册一个GitHub账号，然后创建一个空的仓库用来存放你的评论。仓库建完以后，从设置里选择开发者选项，然后建立一个OAuth Apps见下图。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_1.4897myc9khc0.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_1.4897myc9khc0.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_1.4897myc9khc0.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_1.4897myc9khc0.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搭建二_1.4897myc9khc0.png"
+        title="博客搭建二_1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_2.5vsa4g054mw0.jpg"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_2.5vsa4g054mw0.jpg, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_2.5vsa4g054mw0.jpg 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_2.5vsa4g054mw0.jpg 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搭建二_2.5vsa4g054mw0.jpg"
+        title="博客搭建二_2" /></p>
+<p>上面两项要在主题配置文件修改：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="o">.</span><span class="nx">page</span><span class="o">.</span><span class="nx">comment</span><span class="o">.</span><span class="nx">gitalk</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">enable</span> <span class="o">=</span> <span class="k">true</span> <span class="c1"># 启用评论功能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">owner</span> <span class="o">=</span> <span class="s2">&#34;c2h5oc2h5&#34;</span> <span class="c1"># 用户名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">repo</span> <span class="o">=</span> <span class="s2">&#34;changyan&#34;</span> <span class="c1"># 评论仓库名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">clientId</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span> <span class="c1"># 上图第一项
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">clientSecret</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span> <span class="c1"># 上图第二项
+</span></span></span></code></pre></div><p>最后两项是你GitHub pages 上你的博客域名，如果你和我一样绑定了域名，一定一定要把上面最后两项的地址填写你的域名，不然当你初始化评论时（第一次需要登录你的GitHub账号，在博客下面评论区的位置，登录一次以后就不用再登陆了），会跳转到你的博客首页。搭建完成如下图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_3.3irfg7h8k8a0.png"
+        data-srcset="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_3.3irfg7h8k8a0.png, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_3.3irfg7h8k8a0.png 1.5x, https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba%e4%ba%8c_3.3irfg7h8k8a0.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.staticaly.com/gh/c2h5oc2h5/tuchuang@master/博客搭建二_3.3irfg7h8k8a0.png"
+        title="博客搭建二_3" /></p>
+<p>按照顺序设置下来基本不会遇到ERROR:NOT FOUND问题，至此评论系统就搭建好了。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" data-title="博客搭建二：hugo添加gitalk评论功能" data-hashtags="博客"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" data-title="博客搭建二：hugo添加gitalk评论功能"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" data-title="博客搭建二：hugo添加gitalk评论功能"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%BA%8Chugo%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" data-title="博客搭建二：hugo添加gitalk评论功能"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%80hugo/" class="prev" rel="prev" title="博客搭建一：hugo"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>博客搭建一：hugo</a>
+            <a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" class="next" rel="next" title="博客搭建三：hugo添加搜索功能">博客搭建三：hugo添加搜索功能<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-07-27T22:43:21+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"博客搭建二：hugo添加gitalk评论功能"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

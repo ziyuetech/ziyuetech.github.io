@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>博客搭建四：hugo添加友链 - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="博客搭建四：hugo添加友链" />
+<meta property="og:description" content="交个朋友，为博客添加友链功能（还不完善，显示界面不美观），详情参看https://ziyue.tech/friend/
+有好的解决办法会继续在这里更新。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-28T23:43:21+08:00" />
+<meta property="article:modified_time" content="2022-07-28T23:43:21+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="博客搭建四：hugo添加友链"/>
+<meta name="twitter:description" content="交个朋友，为博客添加友链功能（还不完善，显示界面不美观），详情参看https://ziyue.tech/friend/
+有好的解决办法会继续在这里更新。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" /><link rel="prev" href="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" /><link rel="next" href="https://ziyue.tech/posts/1.3python%E6%B8%A9%E5%BA%A6%E8%BD%AC%E6%8D%A2%E7%A8%8B%E5%BA%8F/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "博客搭建四：hugo添加友链",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE\/"
+        },"genre": "posts","keywords": "博客","wordcount":  2191 ,
+        "url": "https:\/\/ziyue.tech\/posts\/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE\/","datePublished": "2022-07-28T23:43:21+08:00","dateModified": "2022-07-28T23:43:21+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">博客搭建四：hugo添加友链</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2191 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>交个朋友，为博客添加友链功能（还不完善，显示界面不美观），详情参看<a href="https://ziyue.tech/friend/" target="_blank" rel="noopener noreffer">https://ziyue.tech/friend/</a>
+有好的解决办法会继续在这里更新。</p>
+<p><strong>hugo博客文件架构：</strong></p>
+<p>注：以下操作均在你的本地博客根目录下进行（换了主题理论上依然可用）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">config</span><span class="o">.</span><span class="nx">toml：所有的hugo站点都有一个全局配置文件，用来配置整个站点的信息，hugo默认提供了跟多配置指令。</span>
+</span></span><span class="line"><span class="cl"><span class="nx">content：站点下所有的内容页面，也就是我们创建的md文件都在这个content目录下面。</span>
+</span></span><span class="line"><span class="cl"><span class="nx">data：data目录用来存储网站用到一些配置、数据文件。文件类型可以是yaml</span><span class="o">|</span><span class="nx">toml</span><span class="o">|</span><span class="nx">json等格式。</span>
+</span></span><span class="line"><span class="cl"><span class="nx">layouts：存放用来渲染content目录下面内容的模版文件，模版</span><span class="o">.</span><span class="nx">html格式结尾。</span>
+</span></span><span class="line"><span class="cl"><span class="nx">【layouts可以同时存储在项目目录和themes</span><span class="c1">//layouts目录下（不建议）。】
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span><span class="nx">：用来存储图片、css、js等静态资源文件。</span>
+</span></span><span class="line"><span class="cl"><span class="nx">themes：用来存储主题，主题可以方便的帮助我们快速建立站点，也可以方便的切换网站的风格样式。</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="nx">：hugo编译后生成网站的所有文件都存储在这里面，把这个目录放到任意web服务器就可以发布网站成功。</span>
+</span></span></code></pre></div><p>首先，在博客根目录创建assets/css文件夹，在css文件夹下创建_page和_partial文件夹，在_page文件夹下创建_single.scss文件并填写以下内容(或者拷贝你主题文件夹下的该文件然后添加一句@import &ldquo;../_partial/_single/friend&rdquo;;）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/toc&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/friend&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">single</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="nx">single</span><span class="o">-</span><span class="nx">title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">margin</span><span class="o">:</span> <span class="mi">2</span><span class="nx">rem</span> <span class="mi">0</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.6</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">bold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span> <span class="mi">140</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="nx">single</span><span class="o">-</span><span class="nx">subtitle</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.2</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">normal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="nx">post</span><span class="o">-</span><span class="nx">meta</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="o">.</span><span class="mi">875</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">span</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">display</span><span class="o">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="k">include</span> <span class="nx">link</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="nx">author</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.05</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="nx">featured</span><span class="o">-</span><span class="nx">image</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span> <span class="mi">0</span> <span class="mi">1</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">img</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">display</span><span class="o">:</span> <span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">height</span><span class="o">:</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">overflow</span><span class="o">:</span> <span class="nx">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">img</span><span class="o">.</span><span class="nx">lazyloaded</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="nx">content</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.5</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="o">&amp;</span> <span class="nx">code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.25</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h3</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.375</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="o">&amp;</span> <span class="nx">code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.125</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h4</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.25</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="o">&amp;</span> <span class="nx">code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mi">1</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h5</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mf">1.125</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mi">1</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">h2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">h3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">h4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">h5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">h6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">bold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="mf">1.2</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">bolder</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&gt;</span> <span class="o">.</span><span class="nx">header</span><span class="o">-</span><span class="nx">mark</span><span class="o">::</span><span class="na">before</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">content</span><span class="o">:</span> <span class="s2">&#34;|&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">margin</span><span class="o">-</span><span class="nx">right</span><span class="o">:</span> <span class="o">.</span><span class="mi">3125</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="nv">$single</span><span class="o">-</span><span class="nx">link</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">color</span><span class="o">:</span> <span class="nv">$single</span><span class="o">-</span><span class="nx">link</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;</span> <span class="nx">h2</span> <span class="o">&gt;</span> <span class="o">.</span><span class="nx">header</span><span class="o">-</span><span class="nx">mark</span><span class="o">::</span><span class="na">before</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">content</span><span class="o">:</span> <span class="s2">&#34;#&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">b</span><span class="p">,</span> <span class="nx">strong</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">bold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="c1">#ddd;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="k">include</span> <span class="nx">link</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="o">@</span><span class="k">include</span> <span class="nx">overflow</span><span class="o">-</span><span class="nx">wrap</span><span class="p">(</span><span class="k">break</span><span class="o">-</span><span class="nx">word</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">b</span><span class="p">,</span> <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">strong</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="nv">$single</span><span class="o">-</span><span class="nx">link</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="nx">a</span><span class="o">:</span><span class="nx">hover</span> <span class="nx">b</span><span class="p">,</span> <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="nx">a</span><span class="o">:</span><span class="nx">hover</span> <span class="nx">strong</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">color</span><span class="o">:</span> <span class="nv">$single</span><span class="o">-</span><span class="nx">link</span><span class="o">-</span><span class="nx">hover</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">ul</span><span class="p">,</span> <span class="nx">ol</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">padding</span><span class="o">-</span><span class="nx">left</span><span class="o">:</span> <span class="mf">2.5</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">ul</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">list</span><span class="o">-</span><span class="nx">style</span><span class="o">-</span><span class="nx">type</span><span class="o">:</span> <span class="nx">disc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">ruby</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">background</span><span class="o">:</span> <span class="nv">$code</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nx">rt</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">background</span><span class="o">:</span> <span class="nv">$code</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">rt</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="nx">table</span><span class="o">-</span><span class="nx">wrapper</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">overflow</span><span class="o">-</span><span class="nx">x</span><span class="o">:</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="o">&amp;::-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">scrollbar</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$table</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$table</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="o">&gt;</span> <span class="nx">table</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">625</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">border</span><span class="o">-</span><span class="nx">spacing</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">background</span><span class="o">:</span> <span class="nv">$table</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">border</span><span class="o">-</span><span class="nx">collapse</span><span class="o">:</span> <span class="nx">collapse</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">background</span><span class="o">:</span> <span class="nv">$table</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">thead</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">background</span><span class="o">:</span> <span class="nv">$table</span><span class="o">-</span><span class="nx">thead</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$table</span><span class="o">-</span><span class="nx">thead</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">th</span><span class="p">,</span> <span class="nx">td</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">padding</span><span class="o">:</span> <span class="o">.</span><span class="mi">3</span><span class="nx">rem</span> <span class="mi">1</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">border</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">darken</span><span class="p">(</span><span class="nv">$table</span><span class="o">-</span><span class="nx">thead</span><span class="o">-</span><span class="nx">color</span><span class="p">,</span> <span class="mi">2</span><span class="o">%</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nx">darken</span><span class="p">(</span><span class="nv">$table</span><span class="o">-</span><span class="nx">thead</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">,</span> <span class="mi">2</span><span class="o">%</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">img</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">min</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span> <span class="mi">1</span><span class="nx">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">figure</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="nx">image</span><span class="o">-</span><span class="nx">caption</span><span class="o">:</span><span class="k">not</span><span class="p">(</span><span class="o">:</span><span class="k">empty</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">min</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">20</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">80</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">display</span><span class="o">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">padding</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="o">.</span><span class="mi">875</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="c1">#969696;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nx">img</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">display</span><span class="o">:</span> <span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">height</span><span class="o">:</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">overflow</span><span class="o">:</span> <span class="nx">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="nx">lazyload</span><span class="p">,</span> <span class="o">.</span><span class="nx">lazyloading</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="o">@</span><span class="k">include</span> <span class="nx">object</span><span class="o">-</span><span class="nx">fit</span><span class="p">(</span><span class="nx">scale</span><span class="o">-</span><span class="nx">down</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="nx">lazyloaded</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="o">@</span><span class="k">include</span> <span class="nx">object</span><span class="o">-</span><span class="nx">fit</span><span class="p">(</span><span class="nx">fill</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">blockquote</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">display</span><span class="o">:</span> <span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">border</span><span class="o">-</span><span class="nx">left</span><span class="o">:</span> <span class="o">.</span><span class="mi">5</span><span class="nx">rem</span> <span class="nx">solid</span> <span class="nv">$blockquote</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nx">rgba</span><span class="p">(</span><span class="nv">$blockquote</span><span class="o">-</span><span class="nx">color</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">padding</span><span class="o">:</span> <span class="o">.</span><span class="mi">25</span><span class="nx">rem</span> <span class="o">.</span><span class="mi">75</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="mi">1</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">border</span><span class="o">-</span><span class="nx">left</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$blockquote</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nx">rgba</span><span class="p">(</span><span class="nv">$blockquote</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="nx">footnotes</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nx">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">margin</span><span class="o">:</span> <span class="o">.</span><span class="mi">25</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/code&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/instagram&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/admonition&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/echarts&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/mapbox&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/music&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/bilibili&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">hr</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">margin</span><span class="o">:</span> <span class="mi">1</span><span class="nx">rem</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">position</span><span class="o">:</span> <span class="nx">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">border</span><span class="o">-</span><span class="nx">top</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">dashed</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">border</span><span class="o">-</span><span class="nx">bottom</span><span class="o">:</span> <span class="nx">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">border</span><span class="o">-</span><span class="nx">top</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">dashed</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">kbd</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">display</span><span class="o">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">padding</span><span class="o">:</span> <span class="o">.</span><span class="mi">25</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">border</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">border</span><span class="o">-</span><span class="nx">bottom</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">@</span><span class="k">include</span> <span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="p">(</span><span class="mi">3</span><span class="nx">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="o">@</span><span class="k">include</span> <span class="nx">box</span><span class="o">-</span><span class="nx">shadow</span><span class="p">(</span><span class="nx">inset</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="nx">px</span> <span class="mi">0</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="o">.</span><span class="mi">8</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="o">:</span> <span class="nv">$code</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">color</span><span class="o">:</span> <span class="nv">$code</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">border</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">border</span><span class="o">-</span><span class="nx">bottom</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">@</span><span class="k">include</span> <span class="nx">box</span><span class="o">-</span><span class="nx">shadow</span><span class="p">(</span><span class="nx">inset</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="nx">px</span> <span class="mi">0</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">border</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">color</span><span class="o">:</span> <span class="nv">$code</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="nx">version</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">height</span><span class="o">:</span> <span class="mf">1.25</span><span class="nx">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">vertical</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">text</span><span class="o">-</span><span class="nx">bottom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/footer&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">@</span><span class="nx">import</span> <span class="s2">&#34;../_partial/_single/comment&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">typeit</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="nx">highlight</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">padding</span><span class="o">:</span> <span class="o">.</span><span class="mi">375</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="o">.</span><span class="mi">875</span><span class="nx">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="o">:</span> <span class="nv">$code</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">bold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">word</span><span class="o">-</span><span class="k">break</span><span class="o">:</span> <span class="k">break</span><span class="o">-</span><span class="nx">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">white</span><span class="o">-</span><span class="nx">space</span><span class="o">:</span> <span class="nx">pre</span><span class="o">-</span><span class="nx">wrap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">margin</span><span class="o">-</span><span class="nx">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">theme</span><span class="o">=</span><span class="nx">dark</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">--</span><span class="nx">ti</span><span class="o">-</span><span class="nx">cursor</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nv">$global</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">secondary</span><span class="o">-</span><span class="nx">color</span><span class="o">-</span><span class="nx">dark</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">lg</span><span class="o">-</span><span class="nx">toolbar</span> <span class="o">.</span><span class="nx">lg</span><span class="o">-</span><span class="nx">icon</span><span class="o">::</span><span class="na">after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">color</span><span class="o">:</span> <span class="c1">#999;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>然后，在D:\myblog\assets\css_partial下创建_single文件夹，并在_single文件夹下创建_friend.scss文件，填写以下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">#article-container {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">word</span><span class="o">-</span><span class="nx">wrap</span><span class="o">:</span> <span class="k">break</span><span class="o">-</span><span class="nx">word</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">overflow</span><span class="o">-</span><span class="nx">wrap</span><span class="o">:</span> <span class="k">break</span><span class="o">-</span><span class="nx">word</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#article-container a {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">color</span><span class="o">:</span> <span class="c1">#49b1f5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#article-container a:hover {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">text</span><span class="o">-</span><span class="nx">decoration</span><span class="o">:</span> <span class="nx">underline</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#article-container img {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nx">auto</span> <span class="o">.</span><span class="mi">8</span><span class="nx">rem</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div a .friend-info,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div a .friend-name {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">overflow</span><span class="o">:</span> <span class="nx">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">text</span><span class="o">-</span><span class="nx">overflow</span><span class="o">:</span> <span class="nx">ellipsis</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">text</span><span class="o">-</span><span class="nx">overflow</span><span class="o">:</span> <span class="nx">ellipsis</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">white</span><span class="o">-</span><span class="nx">space</span><span class="o">:</span> <span class="nx">nowrap</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">overflow</span><span class="o">:</span> <span class="nx">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">padding</span><span class="o">:</span> <span class="mi">10</span><span class="nx">px</span> <span class="mi">10</span><span class="nx">px</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">position</span><span class="o">:</span> <span class="nx">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">float</span><span class="o">:</span> <span class="nx">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">overflow</span><span class="o">:</span> <span class="nx">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">margin</span><span class="o">:</span> <span class="mi">15</span><span class="nx">px</span> <span class="mi">7</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">width</span><span class="o">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">15</span><span class="nx">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">height</span><span class="o">:</span> <span class="mi">90</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="o">:</span> <span class="mi">8</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span> <span class="mi">17</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">translateZ</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">@</span><span class="nx">media</span> <span class="nx">screen</span> <span class="k">and</span> <span class="p">(</span><span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">1100</span><span class="nx">px</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">width</span><span class="o">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">50</span><span class="o">%</span> <span class="o">-</span> <span class="mi">15</span><span class="nx">px</span><span class="p">)</span> <span class="o">!</span><span class="nx">important</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">@</span><span class="nx">media</span> <span class="nx">screen</span> <span class="k">and</span> <span class="p">(</span><span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">600</span><span class="nx">px</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">width</span><span class="o">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="o">-</span> <span class="mi">15</span><span class="nx">px</span><span class="p">)</span> <span class="o">!</span><span class="nx">important</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div:hover {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">background</span><span class="o">:</span> <span class="nx">rgba</span><span class="p">(</span><span class="mi">87</span><span class="p">,</span> <span class="mi">142</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div:hover img {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">rotate</span><span class="p">(</span><span class="mi">360</span><span class="nx">deg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">rotate</span><span class="p">(</span><span class="mi">360</span><span class="nx">deg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">rotate</span><span class="p">(</span><span class="mi">360</span><span class="nx">deg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">ms</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">rotate</span><span class="p">(</span><span class="mi">360</span><span class="nx">deg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">transform</span><span class="o">:</span> <span class="nx">rotate</span><span class="p">(</span><span class="mi">360</span><span class="nx">deg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div:before {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">position</span><span class="o">:</span> <span class="nx">absolute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">z</span><span class="o">-</span><span class="nx">index</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">background</span><span class="o">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="nx">text</span><span class="o">-</span><span class="nx">bg</span><span class="o">-</span><span class="nx">hover</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transform</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span> <span class="nx">ease</span><span class="o">-</span><span class="nx">out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">transform</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span> <span class="nx">ease</span><span class="o">-</span><span class="nx">out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">transform</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span> <span class="nx">ease</span><span class="o">-</span><span class="nx">out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">ms</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="o">-</span><span class="nx">ms</span><span class="o">-</span><span class="nx">transform</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span> <span class="nx">ease</span><span class="o">-</span><span class="nx">out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">transition</span><span class="o">:</span> <span class="nx">transform</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span> <span class="nx">ease</span><span class="o">-</span><span class="nx">out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">ms</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div:hover:before,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div:focus:before,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div:active:before {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">ms</span><span class="o">-</span><span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">transform</span><span class="o">:</span> <span class="nx">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div a {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">color</span><span class="o">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="nx">font</span><span class="o">-</span><span class="nx">color</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">text</span><span class="o">-</span><span class="nx">decoration</span><span class="o">:</span> <span class="nx">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div a img{
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">float</span><span class="o">:</span> <span class="nx">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">margin</span><span class="o">:</span> <span class="mi">15</span><span class="nx">px</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">width</span><span class="o">:</span> <span class="mi">60</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">height</span><span class="o">:</span> <span class="mi">60</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="o">:</span> <span class="mi">35</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="nx">all</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="nx">all</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">o</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="nx">all</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="nx">ms</span><span class="o">-</span><span class="nx">transition</span><span class="o">:</span> <span class="nx">all</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">transition</span><span class="o">:</span> <span class="nx">all</span> <span class="o">.</span><span class="mi">3</span><span class="nx">s</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div a .friend-name {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">display</span><span class="o">:</span> <span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">padding</span><span class="o">:</span> <span class="mi">16</span><span class="nx">px</span> <span class="mi">10</span><span class="nx">px</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">height</span><span class="o">:</span> <span class="mi">40</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="mi">700</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mi">20</span><span class="nx">px</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">.</span><span class="nx">flink</span><span class="c1">#article-container .friend-list-div &gt; .friend-div a .friend-info {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">display</span><span class="o">:</span> <span class="nx">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">padding</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="mi">10</span><span class="nx">px</span> <span class="mi">1</span><span class="nx">px</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">height</span><span class="o">:</span> <span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span> <span class="mi">13</span><span class="nx">px</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在博客根目录layouts文件夹下创建shortcodes文件夹，然后在该文件夹下创建friend.html文件并填写以下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="nx">IsNamedParams</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{{</span><span class="o">-</span> <span class="nv">$src</span> <span class="o">:=</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;logo&#34;</span> <span class="o">-</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{{</span><span class="o">-</span> <span class="nv">$small</span> <span class="o">:=</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;logo_small&#34;</span> <span class="o">|</span> <span class="k">default</span> <span class="nv">$src</span> <span class="o">-</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{{</span><span class="o">-</span> <span class="nv">$large</span> <span class="o">:=</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;logo_large&#34;</span> <span class="o">|</span> <span class="k">default</span> <span class="nv">$src</span> <span class="o">-</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;friend-div&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">target</span><span class="o">=</span><span class="s2">&#34;_blank&#34;</span> <span class="nx">href</span><span class="o">=</span><span class="p">{{</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;url&#34;</span>  <span class="o">|</span> <span class="nx">safeURL</span> <span class="p">}}</span> <span class="nx">title</span><span class="o">=</span><span class="p">{{</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;name&#34;</span> <span class="p">}}</span> <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;lazyload&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;/svg/loading.min.svg&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="nx">data</span><span class="o">-</span><span class="nx">src</span><span class="o">=</span><span class="p">{{</span> <span class="nv">$src</span> <span class="o">|</span> <span class="nx">safeURL</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">                 <span class="nx">alt</span><span class="o">=</span><span class="p">{{</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;name&#34;</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">                 <span class="nx">data</span><span class="o">-</span><span class="nx">sizes</span><span class="o">=</span><span class="s2">&#34;auto&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="nx">data</span><span class="o">-</span><span class="nx">srcset</span><span class="o">=</span><span class="s2">&#34;{{ </span><span class="si">$small</span><span class="s2"> | safeURL }}, {{ </span><span class="si">$src</span><span class="s2"> | safeURL }} 1.5x, {{ </span><span class="si">$large</span><span class="s2"> | safeURL }} 2x&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;friend-name&#34;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;name&#34;</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;friend-info&#34;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span><span class="nx">Get</span> <span class="s2">&#34;word&#34;</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{{</span> <span class="nx">end</span> <span class="p">}}</span>
+</span></span></code></pre></div><p>最后，在博客根目录content里创建friend文件夹并创建index.md文件，在配置文件里修改菜单增加友链按钮。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">menu</span><span class="o">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weight</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># 友链这个按钮的权重，数字越大排位越靠后
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">identifier</span> <span class="o">=</span> <span class="s2">&#34;friend&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;友链&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;/friend/&#34;</span>
+</span></span></code></pre></div><p>在index.md文件里添加以下内容即可，就是正常的md文件，可任意在别的区域增加你想显示的信息，这个 花括号花括号&lt; friend name=&ldquo;kai&rdquo; url=&ldquo;http://<!-- raw HTML omitted --><!-- raw HTML omitted -->ziyue.tech&rdquo; logo=&ldquo;https://<!-- raw HTML omitted --><!-- raw HTML omitted -->s2.loli.net/2022/07/26/T4VPEMvKFzQ3O1A.jpg&rdquo; word=&ldquo;A funny guy&rdquo; &gt;}}是你要添加的友链，在对应的双引号区间填写具体信息。（注：【 div class=&ldquo;friend-list-div&rdquo; 】下要保留一个空行，如果删去友链会显示不出来，我试出来的（滑稽），层级关系之间缩进2个空格）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;flink&#34;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;article-container&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;friend-list-div&#34;</span> <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">花括号花括号</span><span class="o">&lt;</span> <span class="nx">friend</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;名字&#34;</span> <span class="nx">url</span><span class="o">=</span><span class="s2">&#34;博客地址&#34;</span> <span class="nx">logo</span><span class="o">=</span><span class="s2">&#34;logo图片地址&#34;</span> <span class="nx">word</span><span class="o">=</span><span class="s2">&#34;个人介绍&#34;</span> <span class="o">&gt;</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p>嗯，暂时这样，由hexo迁移至hugo博客功能基本完善了，这个系列应该也就完更了，后面就是好好写内容。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" data-title="博客搭建四：hugo添加友链" data-hashtags="博客"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" data-title="博客搭建四：hugo添加友链"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" data-title="博客搭建四：hugo添加友链"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9Bhugo%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE/" data-title="博客搭建四：hugo添加友链"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%89hugo%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" class="prev" rel="prev" title="博客搭建三：hugo添加搜索功能"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>博客搭建三：hugo添加搜索功能</a>
+            <a href="/posts/1.3python%E6%B8%A9%E5%BA%A6%E8%BD%AC%E6%8D%A2%E7%A8%8B%E5%BA%8F/" class="next" rel="next" title="1.3 python温度转换程序">1.3 python温度转换程序<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-07-28T23:43:21+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"博客搭建四：hugo添加友链"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

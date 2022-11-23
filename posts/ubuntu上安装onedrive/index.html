@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Ubuntu上安装onedrive - Ideas Worth Spreading</title><meta name="Description" content="wangkai&#39;s blog"><meta property="og:title" content="Ubuntu上安装onedrive" />
+<meta property="og:description" content="github项目地址：https://github.com/abraunegg/onedrive，感谢开发者。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-21T19:25:09+08:00" />
+<meta property="article:modified_time" content="2022-11-21T19:25:09+08:00" /><meta property="og:site_name" content="ziyue.tech" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu上安装onedrive"/>
+<meta name="twitter:description" content="github项目地址：https://github.com/abraunegg/onedrive，感谢开发者。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/" /><link rel="prev" href="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%97%A7%E7%89%88%E6%9C%ACtypora/" /><link rel="next" href="https://ziyue.tech/posts/%E6%9B%B4%E6%96%B0%E6%B5%8B%E8%AF%95/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ubuntu上安装onedrive",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ziyue.tech\/posts\/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive\/"
+        },"genre": "posts","keywords": "Ubuntu","wordcount":  726 ,
+        "url": "https:\/\/ziyue.tech\/posts\/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive\/","datePublished": "2022-11-21T19:25:09+08:00","dateModified": "2022-11-21T19:25:09+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "往来"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 时间轴 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" rel="noopener noreffer" target="_blank"> CSDN </a><a class="menu-item" href="https://aidn.jp/mikutap/" rel="noopener noreffer" target="_blank"> 黑洞 </a><a class="menu-item" href="/friend/"> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="So一下" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ideas Worth Spreading">拯救世界去了</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="So一下" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">时间轴</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="https://blog.csdn.net/bytestudio?type=blog" title="" rel="noopener noreffer" target="_blank">CSDN</a><a class="menu-item" href="https://aidn.jp/mikutap/" title="" rel="noopener noreffer" target="_blank">黑洞</a><a class="menu-item" href="/friend/" title="">友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ubuntu上安装onedrive</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://blog.csdn.net/bytestudio?type=blog" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>往来</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-21">2022-11-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;726 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#使用">使用</a></li>
+        <li><a href="#命令介绍">命令介绍</a></li>
+        <li><a href="#服务有了onedrive--m-貌似不需要了">服务(有了onedrive -m 貌似不需要了)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>github项目地址：https://github.com/abraunegg/onedrive，感谢开发者。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># sudo add-apt-repository ppa:yann1ck/onedrive
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">可能暂不需要，源更新时出错</span>    
+</span></span><span class="line"><span class="cl"><span class="o">:</span> <span class="nx">仓库</span> <span class="nx">“https</span><span class="o">://</span><span class="nx">ppa</span><span class="o">.</span><span class="nx">launchpadcontent</span><span class="o">.</span><span class="nx">net</span><span class="o">/</span><span class="nx">yann1ck</span><span class="o">/</span><span class="nx">onedrive</span><span class="o">/</span><span class="nx">ubuntu</span> <span class="nx">kinetic</span> <span class="nx">Release”</span> <span class="nx">没有</span> <span class="nx">Release</span> <span class="nx">文件。</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">N</span><span class="o">:</span> <span class="nx">无法安全地用该源进行更新，所以默认禁用该源。</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">N</span><span class="o">:</span> <span class="nx">参见</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">secure</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="nx">手册以了解仓库创建和用户配置方面的细节。</span>        
+</span></span><span class="line"><span class="cl"><span class="nx">查看源：cd</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">apt</span><span class="o">/</span><span class="nx">sources</span><span class="o">.</span><span class="k">list</span><span class="o">.</span><span class="nx">d</span><span class="o">/</span>    
+</span></span><span class="line"><span class="cl"><span class="nx">sudo</span> <span class="nx">su</span>    
+</span></span><span class="line"><span class="cl"><span class="nx">rm</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">文件名，首字</span><span class="o">+</span><span class="nx">tab补全</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">onedrive</span>
+</span></span></code></pre></div><h3 id="使用">使用</h3>
+<p>在命令行中输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">onedrive</span>
+</span></span></code></pre></div><p>弹出链接，复制到浏览器中，输入账号和密码等待跳转完成，把浏览器地址框的地址复制到命令行中，回车完成账号认证。</p>
+<p>onedrive的文件目录位于$home/OneDrive</p>
+<h3 id="命令介绍">命令介绍</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">onedrive</span> <span class="o">--</span><span class="nx">synchronize</span> 
+</span></span></code></pre></div><p>同步onedrive中的所有内容，同步完账号退出。这个客户端会把所有内容都下载到本地，与微软的先预存一个快照，到使用的时候再下载不同。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">onedrive</span> <span class="o">-</span><span class="nx">m</span> 
+</span></span></code></pre></div><p>m意思是monitor，同步完程序也不退出，继续监听新的变更。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">onedrive</span> <span class="o">--</span><span class="nx">download</span><span class="o">-</span><span class="nx">only</span> <span class="o">--</span><span class="nx">synchronize</span> 
+</span></span></code></pre></div><p>本地的onedrive程序仅从微软服务器下载onedrive中的改变，否则，onedrive把内容删除了，而本地的onedrive目录还有，这会导致再次把本地目录中的内容再次传到服务器上。</p>
+<p>因此，一个保险的做法是，先进行下载同步，再进行上传同步。</p>
+<h3 id="服务有了onedrive--m-貌似不需要了">服务(有了onedrive -m 貌似不需要了)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">systemctl</span> <span class="o">--</span><span class="nx">user</span> <span class="nx">enable</span> <span class="nx">onedrive</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">systemctl</span> <span class="o">--</span><span class="nx">user</span> <span class="nx">start</span> <span class="nx">onedrive</span> 
+</span></span></code></pre></div><p>这样设置成功后就可以不用管它了。后台作为一个服务自动处理。棒棒哒。</p>
+<p>不要轻易在云端和本地全部删除文件来实现云端和本地文件一致，软件本身自己会完成两者同步。删除任意一端另一端也会删除，不会有提示，windows端删除时会弹窗提醒。</p>
+<h4 id="另如果误删千万不要清空回收站千万不要清空回收站千万不要清空回收站">另，如果误删千万不要清空回收站！千万不要清空回收站！千万不要清空回收站！</h4></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-11-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/" data-title="Ubuntu上安装onedrive" data-hashtags="Ubuntu"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/" data-title="Ubuntu上安装onedrive"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/" data-title="Ubuntu上安装onedrive"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://ziyue.tech/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85onedrive/" data-title="Ubuntu上安装onedrive"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ubuntu/">Ubuntu</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%97%A7%E7%89%88%E6%9C%ACtypora/" class="prev" rel="prev" title="旧版本Typora在Ubuntu上安装和使用"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>旧版本Typora在Ubuntu上安装和使用</a>
+            <a href="/posts/%E6%9B%B4%E6%96%B0%E6%B5%8B%E8%AF%95/" class="next" rel="next" title="更新测试">更新测试<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.csdn.net/bytestudio?type=blog" target="_blank">往来</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">Ziyue.Tech 版权所有 [豫ICP备12138号]</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["c2h5oc2h5"],"clientID":"9a28f8120cfb6c1c9c09","clientSecret":"4766665e344b40d812b5120c71a3c32a4b41a73f","id":"2022-11-21T19:25:09+08:00","owner":"c2h5oc2h5","repo":"changyan","title":"Ubuntu上安装onedrive"}},"search":{"algoliaAppID":"MQAFNEZAN2","algoliaIndex":"blog","algoliaSearchKey":"7534d822dddb04dcc8003e9f6907a59d","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
