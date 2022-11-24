@@ -4,7 +4,7 @@
         <link>https://ziyue.tech/</link>
         <description>wangkai&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>support@ziyue.tech (往来)</managingEditor>
-            <webMaster>support@ziyue.tech (往来)</webMaster><lastBuildDate>Thu, 24 Nov 2022 05:45:31 &#43;0800</lastBuildDate>
+            <webMaster>support@ziyue.tech (往来)</webMaster><lastBuildDate>Fri, 25 Nov 2022 04:46:19 &#43;0800</lastBuildDate>
             <atom:link href="https://ziyue.tech/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>写在前面</title>
@@ -17,12 +17,12 @@
 <p>对博文做个备份。</p>]]></description>
 </item>
 <item>
-    <title>更新测试</title>
-    <link>https://ziyue.tech/posts/%E6%9B%B4%E6%96%B0%E6%B5%8B%E8%AF%95/</link>
-    <pubDate>Thu, 24 Nov 2022 05:45:31 &#43;0800</pubDate>
+    <title>Manjaro软件安装和简单配置</title>
+    <link>https://ziyue.tech/posts/manjaro%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Fri, 25 Nov 2022 04:46:19 &#43;0800</pubDate>
     <author>往来</author>
-    <guid>https://ziyue.tech/posts/%E6%9B%B4%E6%96%B0%E6%B5%8B%E8%AF%95/</guid>
-    <description><![CDATA[测试manjaro系统]]></description>
+    <guid>https://ziyue.tech/posts/manjaro%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[换源 sudo pacman-mirrors -i -c China -m rank 使用yay软件管理命令行 sudo pacman -Sy yay https://archlinux.org/ 浏览器安装 yay -Ss edge 安装输入法 yay -Sy fcitx-im fcitx-configtool yay -Sy fcitx-sogoupinyin 安装完成后输入命令sudo nano ~/.xprofile 添加：这一步是必要]]></description>
 </item>
 <item>
     <title>Ubuntu上安装onedrive</title>
