@@ -4,7 +4,7 @@
         <link>https://ziyue.tech/</link>
         <description>wangkai&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>support@ziyue.tech (往来)</managingEditor>
-            <webMaster>support@ziyue.tech (往来)</webMaster><lastBuildDate>Fri, 25 Nov 2022 04:46:19 &#43;0800</lastBuildDate>
+            <webMaster>support@ziyue.tech (往来)</webMaster><lastBuildDate>Mon, 05 Dec 2022 02:18:03 &#43;0800</lastBuildDate>
             <atom:link href="https://ziyue.tech/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>写在前面</title>
@@ -17,12 +17,21 @@
 <p>对博文做个备份。</p>]]></description>
 </item>
 <item>
+    <title>物理14</title>
+    <link>https://ziyue.tech/posts/%E7%89%A9%E7%90%8614/</link>
+    <pubDate>Mon, 05 Dec 2022 02:18:03 &#43;0800</pubDate>
+    <author>往来</author>
+    <guid>https://ziyue.tech/posts/%E7%89%A9%E7%90%8614/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Manjaro软件安装和简单配置</title>
     <link>https://ziyue.tech/posts/manjaro%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</link>
     <pubDate>Fri, 25 Nov 2022 04:46:19 &#43;0800</pubDate>
     <author>往来</author>
     <guid>https://ziyue.tech/posts/manjaro%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</guid>
-    <description><![CDATA[换源 sudo pacman-mirrors -i -c China -m rank 使用yay软件管理命令行 sudo pacman -Sy yay https://archlinux.org/ 浏览器安装 yay -Ss edge 安装输入法 yay -Sy fcitx-im fcitx-configtool yay -Sy fcitx-sogoupinyin 安装完成后输入命令sudo nano ~/.xprofile 添加：这一步是必要]]></description>
+    <description><![CDATA[<h4 id="换源">换源</h4>
+<p>sudo pacman-mirrors -i -c China -m rank</p>]]></description>
 </item>
 <item>
     <title>Ubuntu上安装onedrive</title>
@@ -79,14 +88,6 @@
     <author>往来</author>
     <guid>https://ziyue.tech/posts/ubuntu%E9%87%8C%E7%94%A8windows%E6%80%9D%E7%BB%B4%E5%AE%89%E8%A3%85clash%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
     <description><![CDATA[<p>新版的ubuntu22.04LTS(ubuntu22.10)异常地好用，在设置里简单设置一下外观，界面就很Mac风，想尝试ubuntu的小伙伴可以入手了。</p>]]></description>
-</item>
-<item>
-    <title>Ubuntu版本选择和软件们</title>
-    <link>https://ziyue.tech/posts/ubuntu%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9%E5%92%8C%E8%BD%AF%E4%BB%B6%E4%BB%AC/</link>
-    <pubDate>Fri, 18 Nov 2022 18:54:47 &#43;0800</pubDate>
-    <author>往来</author>
-    <guid>https://ziyue.tech/posts/ubuntu%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9%E5%92%8C%E8%BD%AF%E4%BB%B6%E4%BB%AC/</guid>
-    <description><![CDATA[<p>Ubuntu版本：Ubuntu22.10,有许多新的功能使我放弃了22.04LTS版本。manjaro版本不太适合我，定制性太高，折腾起来很麻烦，我喜欢简洁但不丑陋的系统，manjaro系统每个窗口都会带有一个标题栏，使得页面多出一栏显得更拥挤。</p>]]></description>
 </item>
 </channel>
 </rss>
